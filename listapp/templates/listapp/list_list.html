@@ -10,10 +10,12 @@
     <table>
         <tr>
             <th>My Lists</th>
+            <th></th>
         </tr>
-        {% for list in object_list %}
+        {% for list in lists %}
         <tr>
             <td>{{list.title}}</td>
+            <td><a href="{% url 'list' list.id %}">View</a></td>
         </tr>
         {% empty %}
         <h3>You currently have no lists</h3>
