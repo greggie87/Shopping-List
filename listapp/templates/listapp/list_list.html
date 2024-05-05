@@ -18,7 +18,6 @@
         {% for list in lists %}
         <tr>
             <td>{{list.title}}</td>
-            <td><a href="{% url 'list' list.id %}">View</a></td>
             <td><a href="{% url 'list-update' list.id %}">Edit</a></td>
             <td><a href="{% url 'list-delete' list.id %}">Delete</a></td>
         </tr>
