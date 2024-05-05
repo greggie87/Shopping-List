@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import List
 
@@ -18,28 +19,39 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return reverse_lazy('lists')
 
-class ShoppingLists(ListView):
+
+class ShoppingLists(LoginRequiredMixin, ListView):
     model = List
     context_object_name = 'lists'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['lists'] = context['lists'].filter(user=self.request.user)
+        return context
 
-class ListDetail(DetailView):
+
+class ListDetail(LoginRequiredMixin, DetailView):
     model = List
     context_object_name = 'uniquelist'
 
 
-class ListCreate(CreateView):
+class ListCreate(LoginRequiredMixin, CreateView):
+    model = List
+    fields = ['title']
+    success_url = reverse_lazy('lists')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(ListCreate, self).form_valid(form)
+
+
+class ListUpdate(LoginRequiredMixin, UpdateView):
     model = List
     fields = ['title']
     success_url = reverse_lazy('lists')
 
 
-class ListUpdate(UpdateView):
-    model = List
-    fields = ['title']
-    success_url = reverse_lazy('lists')
-
-class ListDelete(DeleteView):
+class ListDelete(LoginRequiredMixin, DeleteView):
     model = List
     context_object_name = 'list'
     success_url = reverse_lazy('lists')
