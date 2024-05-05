@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login to Shopping List App</title>
+    <title>Register to Shopping List App</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>Register</h1>
 
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="Login">
+        <input type="submit" value="Register">
     </form>
 
 
-    <p>Don't have an account? <a href="{% url 'register' %}">Register Here</a></p>
+    <p>Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
 
 
 </body>
