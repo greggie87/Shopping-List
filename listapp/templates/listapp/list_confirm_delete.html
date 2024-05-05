@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Delete List</title>
-</head>
-<body>
+
     <a href="{% url 'lists' %}">&#8592; Go Back</a>
 
     <form method="POST">
         {% csrf_token %}
-        <p>Are your sure you want to delete this list? <b>"{{list}}"</b> </p>
+        <p>Are your sure you want to delete this list item? <b>"{{list}}"</b> </p>
         <input class="button" type="submit" value="Delete" />
     </form>
     
-</body>
-</html>

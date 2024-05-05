@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Form</title>
-</head>
-<body>
+    <a href="{% url 'lists' %}">&#8592; Go Back</a>
     
-    <h3>Please Name Your List</h3>
-    <a href="{% url 'lists' %}">Go Back</a>
+    <h3>Please enter your item to add to the shopping list:</h3>
+    
 
     <form method ="POST" action="">
         {% csrf_token %}
@@ -16,6 +9,3 @@
 
         <input type="submit" value="Submit">
     </form>
-
-</body>
-</html>

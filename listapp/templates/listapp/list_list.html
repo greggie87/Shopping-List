@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+
     {% if request.user.is_authenticated %}
     <p>{{request.user}}</p>
     <a href="{% url 'logout' %}">Logout</a>
@@ -14,12 +7,12 @@
     {% endif %}
 
     <hr>
-    <h1>My Shopping Lists</h1>
+    <h1>My Shopping List</h1>
 
-    <a href="{% url 'list-create' %}">Add new list</a>
+    <a href="{% url 'list-create' %}">Add new item</a>
     <table>
         <tr>
-            <th>My Lists</th>
+            <th>Items:</th>
             <th></th>
         </tr>
         {% for list in lists %}
@@ -33,5 +26,3 @@
         <h3>You currently have no lists</h3>
         {% endfor %}
     </table>
-</body>
-</html>
