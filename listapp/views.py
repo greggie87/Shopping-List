@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import List, Item
+from django.views.generic.list import ListView
+from .models import List
 
 # Create your views here.
 
-def list_app(request):
-    return HttpResponse("Hello, This will be a shopping list app!")
+class ShoppingLists(ListView):
+    model = List
