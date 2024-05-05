@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9r3z5-@6a6re%v675!)gnahdyg#m13bl@ew4g+n4-hvdb&5v62'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-greggie87-shoppinglist-8kek63allrc.ws-eu110.gitpod.io','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-greggie87-shoppinglist-8kek63allrc.ws-eu111.gitpod.io','.herokuapp.com']
 
 
 # Application definition
@@ -78,16 +78,22 @@ WSGI_APPLICATION = 'shoppinglist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.gitpod.io",
+    "https://*.herokuapp.com"
+]
 
 
 # Password validation
