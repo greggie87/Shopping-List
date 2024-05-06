@@ -56,35 +56,68 @@ Here are the user stories for this project:
 
 ### Existing Features
 
-- __Register__
+__Register__
 
-    - The register view allows the user to create an account.
-    - The user inputs a chosen username and password which they must enter twice to avoid a mistake in the password.
-    - This information is stored on the database with the password being encripted.
-    ![Register](readme_files/images/register.PNG)
-
-
-
-- __Login__
-
-    - The login view acts as the landing page for the app if not already logged in.
-    - If already registered, a user can enter their username and password to take them to their personalised list view page.
-    ![Login](readme_files/images/login.PNG)
+- The register view allows the user to create an account.
+- The user inputs a chosen username and password which they must enter twice to avoid a mistake in the password.
+- This information is stored on the database with the password being encripted.
+![Register](readme_files/images/register.PNG)
 
 
 
-- __List__
+__Login__
 
-    - The list page is the main view of the app.
-    - The user can only see it if logged in.
-    - The header on the list page states "Hello -Username-" with the first letter of the name always being capitalized by the {{request.user|title}} function.
-    - The header also says how many items the user has left to buy. The word 'items' utilizes a pluralize function in order to remove the 's' to say 'item' when the number is 1.
-    - At the top right of the page there is a 'Logout' button. This will log out the user and direct them back to the login page.
-    ![List](readme_files/images/list_view.PNG)
-     - The main area of the list view is populated by the list itself.
-     - The add item button takes the user to the create list view where they can create a list item.
-     - When an item is added, it is listed with a grey circle next to it. This shows that it has not yet been obtained.
-     - When an item is clicked the user is taken to the edit view where they can rename it or mark as complete(checked).
-     - When an item is marked as complete, the grey circle becomes green and the text becomes italic and strikethrough. The item also then goes to the bottom of the list. This makes it extremely clear that the item has been marked as complete.
+- The login view acts as the landing page for the app if not already logged in.
+- If already registered, a user can enter their username and password to take them to their personalised list view page.
+![Login](readme_files/images/login.PNG)
+
+
+
+__List__
+
+- The list page is the main view of the app.
+- The user can only see it if logged in.
+- The header on the list page states "Hello -Username-" with the first letter of the name always being capitalized by the {{request.user|title}} function.
+- The header also says how many items the user has left to buy. The word 'items' utilizes a pluralize function in order to remove the 's' to say 'item' when the number is 1.
+- At the top right of the page there is a 'Logout' button. This will log out the user and direct them back to the login page.
+![List](readme_files/images/list_view.PNG)
+- The main area of the list view is populated by the list itself.
+- The add item button takes the user to the create list view where they can create a list item.
+- When an item is added, it is listed with a grey circle next to it. This shows that it has not yet been obtained.
+- When an item is clicked the user is taken to the edit view where they can rename it or mark as complete(checked).
+- When an item is marked as complete, the grey circle becomes green and the text becomes italic and strikethrough. The item also then goes to the bottom of the list. This makes it extremely clear that the item has been marked as complete.
+- The last function on the list view is the ability to delete. This opens the delete view prompting the user to confirm deletion.
+- When no items are in the list, the view shows a no items in list message. This may be because the user is now, or the user has deleted all items from the list. This goes away as soon as an item is added.
+
+    ![No Items](readme_files/images/no_items.PNG)
+
+
+ __Add Item__
+ - When a user clicks on the "Add Item" button, they are taken to the add item view.
+ - The user names the item and presses submit. This posts a list item to the server and lists it on the list view as incomplete(grey circle).
+ - As soon as sumbit is clicked, the user is taken back to the list view via "reverse_lazy('lists')".
+ - If the user does not want to add an item at this point, they can bress the "Go Back" button on the top left of the header.
+
+    ![Add Item](readme_files/images/add_item.PNG)
+
+__Edit Item__
+- The edit item view is very similar to the the add item view. It however includes the complete checkbox as well as the name of the item in 'Title'.
+- The user can edit the name of the item here and submit to save the changes.
+- If the complete box is checked and submitted, the named item on the list moves to the bottom, has strikethrough,italic and a green circle to show that it is complete.
+- Both "Go Back" and "Submit" will take the user back to the main list view.
+
+    ![Edit Item](readme_files/images/edit_item.PNG)
+
+
+__Delete Item__
+- When a red X associated with the item on that line is clicked, the user is taken to an alert page with a prompt asking to confirm deletion of the item.
+- The user can press "Delete" to confirm deletion of the item. This also removes it from the database.
+- If the user does not want to delete, they can click the "Go Back" button in the header.
+
+    ![Delete](readme_files/images/delete.PNG)
+
+
+
+
 
 
