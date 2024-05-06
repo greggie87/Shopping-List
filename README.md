@@ -156,5 +156,104 @@ __Technologies Used__
     - Screenshot example from my database on Elephant:
     ![Elephant SQL](readme_files/images/elephant.PNG)
 
+## Bugs and Testing
+
+__Bugs__
+
+When deploying to Heroku, it was discovered that no custom css styling was being applied to the app.
+![Broken Deploy](readme_files/images/heroku_issue.PNG)
+
+It was discovered that I had not performed a 'collectstatic' so none of my static files were connecting to the dijango app when debug was set to False. I performed the collectstatic and redeployed. All was fine.
+![BFixed Deploy](readme_files/images/heroku_fixed.PNG)
+
+Earlier in development, the project would not deploy at all on Heroku. It was discovered after much time that python had a capital P in the runtime.txt file. Heroko therefore did not know what version of python to load and ceased the build. These two deployment issues were a good learning curve.
+
+__Testing__
+
+All HTML documents were parsed through the w3 Nu Html checker.
+
+![main html check](readme_files/images/nu_html_w3_main.PNG)
+This is the main.html (base). It seems that is an unavoidable issue when working with django as these syntaxes are important. I am yet to find a workaroud/fix. It is a common 'issue' thorught all of the html decuments. Here is the login page for example:
+![login html check](readme_files/images/nu_html_w3_login.PNG)
+
+I passed the python code through the Code Institute PEP8 Python Linter. Here is the models:
+![models pep8](readme_files/images/linter_models.PNG)
+And here is the Views:
+![views pep8](readme_files/images/linter_views.PNG)
+
+It seems here that again these are unavoidable dijango syntaxes, mainly being too long on one line.
+
+I passed the style.css through the W3C CSS Validator:
+![css validator](readme_files/images/css_validator.PNG)
+All great!
+
+I was not able to validate any javascript as none was used by me in this project in the end.
+
+I performed a lighthouse test on the deployed app and all seemed good:
+![Lighthouse](readme_files/images/lighthouse.PNG)
+I did the same on the other pages in the app and results were all similar.
+
+__Manual Testing__
+
+- Many users were created and the app funcioned as it should on all of them. Many combinations of list items were used and all stayed private to each user.
+- All registration attempts worked as expected.
+- All logins and logouts functioned as expected.
+- All list midifications functioned as expected.
+- All deletions worked well and were removed from the database.
+- Deletion of users collaped deletion of all data also worked.
+- The app was tested on multiple operating systems including Chrome, Microsoft Edge, Firefox, Opera and Safari. The app functioned identically on all.
+- The app was tested on multiple tablets and mobile devices. The only slight issue I have come accross is the header does not size correctly. This is mainly on smaller screens/devices. I believe this to be a clash with a boostrap model as the best I could do was resize and ofset it on larger screens to make it look correct. This was done in custom style.css. It is meant to be the same width as the container at any screen size. With the nature of the app, there was no real need for media queries. Where this could fix the header issue, it may be worht testing without bootstrap installed first.
+- The error in the terminal warning about no favicon was constant so I added a relevant favicon.
+
+## Deployment
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select *New* in the top-right corner of your Heroku Dashboard, and select *Create new app* from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select *Create App*.
+- From the new app *Settings*, click *Reveal Config Vars*, and set the following key/value pairs:
+  - `CLOUDINARY_URL` (insert your own Cloudinary API key here)
+  - `DATABASE_URL` (this comes from the **Resources** tab, you can get your own Postgres Database using the Free Hobby Tier)
+  - `SECRET_KEY` (this can be any random secret key)
+  - `PORT` (8000)
+
+Heroku needs two additional files in order to deploy properly.
+- requirements.txt
+- Procfile
+
+You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`.
+If you have your own packages that have been installed, then the requirements file needs updated using: `pip3 freeze --local > requirements.txt`
+
+The Procfile can be created with the following command: `echo web: gunicorn shoppinglist.wsgi > Procfile`
+
+For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
+
+Either:
+- Select "Automatic Deployment" from the Heroku app.
+
+Or:
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a <app_name>` (replace app_name with your app, without the angle-brackets)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type: `git push heroku main`
+
+The frontend terminal should now be connected and deployed to Heroku.
+## Credits
+
+- Code Institute - for the mock deployment terminal
+- Code Institute - for teaching the basics of django via the Codestar walkthrough Project. It helped a lot!
+- Stack overflow - for information to help linking models to view for user items.
+- W3Schools - Information on how the reverse_lazy function works.
+- Dennis Ivanov - Lessons on Django class based views and how to utilize them for this project
+
+- Background image courtesey of Pexels.com
+
+
+Thank you for spending time viewing my project.
+
+
+
+
+
 
 
