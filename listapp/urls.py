@@ -1,4 +1,6 @@
 from django.urls import path
+from django.views.static import serve
+from django.conf import settings
 from .views import ShoppingLists, ListDetail, ListCreate, ListUpdate, ListDelete, CustomLoginView, RegisterPage
 from django.contrib.auth.views import LogoutView
 
