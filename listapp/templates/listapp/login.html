@@ -1,11 +1,29 @@
+{% extends 'listapp/main.html' %}
+{% block content %}
 
+<div class="header-bar">
     <h1>Login</h1>
+</div>
 
+<div class="card-body">
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="Login">
+        <input class="button" type="submit" value="Login">
     </form>
 
-
     <p>Don't have an account? <a href="{% url 'register' %}">Register Here</a></p>
+</div>
+
+<div class="footer-bar">
+    <div>
+        <p>Shopping List App</p>
+        <p><i class="fab fa-facebook-square ms-3"></i>
+            <i class="fab fa-twitter-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+            <i class="fab fa-youtube-square ms-3"></i>
+        </p>
+        <p>Greg Reeds 2024</p>
+    </div>
+    
+{% endblock content %}

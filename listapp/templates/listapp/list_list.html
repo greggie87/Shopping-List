@@ -1,27 +1,60 @@
+{% extends 'listapp/main.html' %}
+{% block content %}
 
+<!--container header-->
+<div class="header-bar">
+    <div>
+        <h1>Hello {{request.user|title}}</h1>
+        <h3 style="margin:0">You have {{count}} item{{ count|pluralize:"s" }} to buy!</h3>
+    </div>
+
+    <!--checks if user is logged in-->
     {% if request.user.is_authenticated %}
-    <p>{{request.user}}</p>
     <a href="{% url 'logout' %}">Logout</a>
     {% else %}
     <a href="{% url 'login' %}">Login</a>
     {% endif %}
+</div>
 
-    <hr>
-    <h1>My Shopping List</h1>
+<!--populates the list items-->
+<div>
+    <a id="add-link" href="{% url 'list-create' %}">&#x2b;</a>
+    <a id="add-link-text" href="{% url 'list-create' %}">Add Item</a>
+</div>
 
-    <a href="{% url 'list-create' %}">Add new item</a>
-    <table>
-        <tr>
-            <th>Items:</th>
-            <th></th>
-        </tr>
-        {% for list in lists %}
-        <tr>
-            <td>{{list.title}}</td>
-            <td><a href="{% url 'list-update' list.id %}">Edit</a></td>
-            <td><a href="{% url 'list-delete' list.id %}">Delete</a></td>
-        </tr>
-        {% empty %}
-        <h3>You currently have no lists</h3>
-        {% endfor %}
-    </table>
+<div class="list-items-wrapper">
+    {% for list in lists %}
+    <div class="list-wrapper">
+        {% if list.complete %}
+        <div class="list-title">
+            <div class="list-complete-icon"></div>
+            <i><s><a href="{% url 'list-update' list.id %}">{{list}}</a></s></i>
+        </div>
+        <a class="delete-link" href="{% url 'list-delete' list.id %}">&#215;</a>
+        {% else %}
+        <div class="list-title">
+            <div class="list-incomplete-icon"></div>
+            <a href="{% url 'list-update' list.id %}">{{list}}</a>
+        </div>
+        <a class="delete-link" href="{% url 'list-delete' list.id %}">&#215;</a>
+        {% endif %}
+
+    </div>
+
+    {% empty %}
+    <h3>You currently have no items in your list</h3>
+    {% endfor %}
+
+</div>
+<div class="footer-bar">
+    <div>
+        <p>Shopping List App</p>
+        <p><i class="fab fa-facebook-square ms-3"></i>
+            <i class="fab fa-twitter-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+            <i class="fab fa-youtube-square ms-3"></i>
+        </p>
+        <p>Greg Reeds 2024</p>
+    </div>
+
+    {% endblock content %}

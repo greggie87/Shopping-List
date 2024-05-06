@@ -1,9 +1,27 @@
+{% extends 'listapp/main.html' %}
+{% block content %}
 
+<div class="header-bar">
     <a href="{% url 'lists' %}">&#8592; Go Back</a>
+</div>
 
+<div class="card-body">
     <form method="POST">
         {% csrf_token %}
         <p>Are your sure you want to delete this list item? <b>"{{list}}"</b> </p>
         <input class="button" type="submit" value="Delete" />
     </form>
+</div>
+
+<div class="footer-bar">
+    <div>
+        <p>Shopping List App</p>
+        <p><i class="fab fa-facebook-square ms-3"></i>
+            <i class="fab fa-twitter-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+            <i class="fab fa-youtube-square ms-3"></i>
+        </p>
+        <p>Greg Reeds 2024</p>
+    </div>
     
+{% endblock content %}

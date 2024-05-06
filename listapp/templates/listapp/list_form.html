@@ -1,11 +1,28 @@
-    <a href="{% url 'lists' %}">&#8592; Go Back</a>
-    
-    <h3>Please enter your item to add to the shopping list:</h3>
-    
+{% extends 'listapp/main.html' %}
+{% block content %}
 
-    <form method ="POST" action="">
+<div class="header-bar">
+    <a href="{% url 'lists' %}">&#8592; Go Back</a>
+</div>
+
+<div class="card-body">
+    <form method="POST" action="">
         {% csrf_token %}
         {{form.as_p}}
 
-        <input type="submit" value="Submit">
+        <input class="button" type="submit" value="Submit">
     </form>
+</div>
+
+<div class="footer-bar">
+    <div>
+        <p>Shopping List App</p>
+        <p><i class="fab fa-facebook-square ms-3"></i>
+            <i class="fab fa-twitter-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+            <i class="fab fa-youtube-square ms-3"></i>
+        </p>
+        <p>Greg Reeds 2024</p>
+    </div>
+
+{% endblock content %}
