@@ -1,10 +1,11 @@
 {% extends 'listapp/main.html' %}
 {% block content %}
-
+<!--header-->
 <div class="header-bar">
     <h1>Login</h1>
 </div>
 
+<!--post method for login-->
 <div class="card-body">
     <form method="POST">
         {% csrf_token %}
@@ -15,6 +16,7 @@
     <p>Don't have an account? <a href="{% url 'register' %}">Register Here</a></p>
 </div>
 
+<!--footer-->
 <div class="footer-bar">
     <div>
         <p>Shopping List App</p>
@@ -25,5 +27,5 @@
         </p>
         <p>Greg Reeds 2024</p>
     </div>
-    
-{% endblock content %}
+
+    {% endblock content %}

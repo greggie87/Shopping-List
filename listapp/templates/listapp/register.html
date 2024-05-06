@@ -1,9 +1,12 @@
 {% extends 'listapp/main.html' %}
 {% block content %}
 
+<!--header-->
 <div class="header-bar">
     <h1>Register</h1>
 </div>
+
+<!--form to allow a user to register-->
 <div class="card-body">
     <form method="POST">
         {% csrf_token %}
@@ -20,6 +23,7 @@
     <p>Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
 </div>
 
+<!--footer-->
 <div class="footer-bar">
     <div>
         <p>Shopping List App</p>

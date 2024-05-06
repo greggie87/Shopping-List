@@ -16,7 +16,7 @@
     {% endif %}
 </div>
 
-<!--populates the list items-->
+<!--populates the list items with edit and delete functions-->
 <div>
     <a id="add-link" href="{% url 'list-create' %}">&#x2b;</a>
     <a id="add-link-text" href="{% url 'list-create' %}">Add Item</a>
@@ -46,6 +46,8 @@
     {% endfor %}
 
 </div>
+
+<!--footer-->
 <div class="footer-bar">
     <div>
         <p>Shopping List App</p>
