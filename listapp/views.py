@@ -11,9 +11,8 @@ from django.contrib.auth import login
 
 from .models import List
 
-
-
 # Registration, login and logout views #
+
 
 class CustomLoginView(LoginView):
     template_name = 'listapp/login.html'
@@ -41,9 +40,8 @@ class RegisterPage(FormView):
             return redirect('lists')
         return super(RegisterPage, self).get(*args, **kwargs)
 
-
-
 # Shopping list views #
+
 
 class ShoppingLists(LoginRequiredMixin, ListView):
     model = List

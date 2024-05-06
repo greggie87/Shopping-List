@@ -116,8 +116,45 @@ __Delete Item__
 
     ![Delete](readme_files/images/delete.PNG)
 
+### Future Features
+- Add function to clicking on item automatically marks it to complete and edit view as separate button next to delete on the list line.
+- Ability to create multiple saved and custom titled lists for each individual user. This would need to be done with extra models and views.
+- Ability to share lists with other users if desired.
+- Add favourite items function so that user can add them to list without having to type fully.
+
+## Development
+
+__Models__
+
+![Models](readme_files/images/models.PNG)
+
+The models used were:
+- user - Using ForeignKey to identify unique registered users. The model includes a cascade on delete in order to remove all their posted data if the account is deleted.
+- title - This sets the model for list items.
+- created - Shows date and time of a post. This would be useful for the future when multiple lists are made for UX as well as ordering. Currently this is useful for seeing posts in the database.
+- complete - The model which deals with marking and modifying an item as completed or not.
+- The Meta for ordering is the initial means of ordering the list and putting completed items at the end.
 
 
+
+
+__A little behind the scenes of the app before styling:__
+
+![Before Styling](readme_files/images/before_styling.PNG)
+
+__Technologies Used__
+
+- Python - an interpreted, object-oriented, high-level programming language https://www.python.org/.
+- Django - Framework facilitating building full stack web application https://www.djangoproject.com/.
+- Javascript - High-level programming language https://www.javascript.com/.
+- HTML5 - Markup language used to make webpages https://html.com/html5/.
+- CSS3 - A language used to style HTML and XHTML documents presentations in web development.
+- Gitpod - Online integrated development environment https://www.gitpod.io/.
+- GitHub - Version control service used for storing and sharing development projects https://github.com/.
+- Heroku - a container-based cloud platform where developers can deploy their projects https://www.heroku.com/.
+- ElephantSQL - The SQL cloud database used for all user data and items https://www.elephantsql.com
+    - Screenshot example from my database on Elephant:
+    ![Elephant SQL](readme_files/images/elephant.PNG)
 
 
 
